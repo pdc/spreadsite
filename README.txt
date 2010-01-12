@@ -6,7 +6,7 @@ Motivation
 
 This is a response to the frustration I had with a 'resource library' (list of
 links) we were implementing for a quasi-governmental web site using a
-content-management system (Django, as it happens). Our customer was actually the
+content-management system (Drupal, as it happens). Our customer was actually the
 subcontractor of the subcontractor of the quango charged with creating the site.
 No-one in this hierarchy was capable of using the CMS to edit the links; instead
 proposed changes floated up and down the layers of management in the form of a
