@@ -47,10 +47,10 @@ MEDIA_ROOT = local_file('media')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://localhost/~pdc/work/2010/spreadsite/media/'
+MEDIA_URL = 'http://localhost/~pdc/spreadsite/media/'
 
 STATIC_ROOT = local_file('static')
-STATIC_URL = 'http://localhost/~pdc/work/2010/spreadsite/static/'
+STATIC_URL = 'http://localhost/~pdc/spreadsite/static/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -64,6 +64,8 @@ CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 
 SPREADLINKS_DIR = local_file('resource-libraries')
 SPREADLINKS_PER_PAGE = 5
+
+DOWNBLOG_DIR = local_file('blog-entries')
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'athb&+#*b-v^!wu+^=3jw&3s#_hr(br)3g9_0fw8ontycc_hxk'
@@ -109,4 +111,5 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     
     'spreadsite.spreadlinks',
+    'spreadsite.downblog',
 )
