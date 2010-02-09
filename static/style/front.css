@@ -1,0 +1,15 @@
+
+#banner {
+    color: #DEF;
+    background-color: #123;
+}
+
+#banner-logo {
+    font-size: 4em;
+    margin: 0;
+    padding: 128px 10px 0;
+    
+    font-family: "League Gothic", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}

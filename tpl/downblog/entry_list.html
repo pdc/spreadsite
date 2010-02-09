@@ -7,8 +7,13 @@
 	<meta name="generator" content="TextMate http://macromates.com/">
 	<meta name="author" content="Damian Cugley">
 	<!-- Date: 2010-02-08 -->
+	<link rel="stylesheet" type="text/css" href="{{ settings.STATIC_URL }}style/base.css" />
+	<link rel="stylesheet" type="text/css" href="{{ settings.STATIC_URL }}style/front.css" />
 </head>
 <body>
+  <div id="banner">
+    <p id="banner-logo">Spreadsite</p>
+  </div>
   <h1>{{title}}</h1>
   {{ body|markdown }}
 </body>
