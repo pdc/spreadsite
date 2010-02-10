@@ -4,7 +4,7 @@
 linklibrarylib.py
 
 Created by Damian Cugley on 2010-01-01.
-Copyright (c) 2010 __MyCompanyName__. All rights reserved.
+Copyright (c) 2010 Damian Cugley. All rights reserved.
 """
 
 import sys
@@ -164,8 +164,3 @@ class Link(object):
             elif key == 'url':
                 key = 'href'
             setattr(self, key, val)
-                    
-            
-                
-        
-        

@@ -9,6 +9,7 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.conf import settings
 import datetime
 from spreadsite.spreadlinks.linklibrarylib import *
+from spreadsite.spreadlinks.models import *
 
 def render_with_template(template_name):
     """Decorator to wrap template-based rendering around a view function returning template variables."""
@@ -21,20 +22,6 @@ def render_with_template(template_name):
         return wrapped_handler
     return decorator
     
-    
-def get_library_set(root_dir):
-    key = 'library_set'
-    result = cache.get(key)
-    if not result:
-        result = LibrarySet(root_dir)
-        cache.set(key, result)
-    return result
-    
-def get_library_or_404(root_dir, library_name):
-    try:
-        return get_library_set(root_dir)[library_name]
-    except KeyError, e:
-        raise Http404()
     
 @render_with_template('spreadlinks/library-list.html')
 def library_list(request, root_dir):
