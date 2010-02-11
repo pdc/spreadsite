@@ -1,6 +1,8 @@
+# Encoding: UTF-8
 # Create your views here.
 import os
 import re
+import datetime
 import email.parser
 from django.http import HttpResponse
 from django.template import RequestContext
@@ -25,18 +27,20 @@ def entry_list(request, root_dir):
                 entries.append(m.groups() + (dir_name, file_name))
     entries.sort() # Most recent last.
     
-    lib = get_library_or_404(settings.SPREADLINKS_DIR, 'spreadsite')
-    links = lib.all_links
-    
     entry = entries[-1]
     y, m, d, slug, suffix, dir_name, file_name = entry
     with open(os.path.join(dir_name, file_name), 'rb') as input:
-        msg = parser.parse(input)
+        msg = parser.parse(input)        
     template_args = {
         'title': msg['title'],
         'body': msg.get_payload(),
-        'links': links,
-    }        
+        'published': datetime.datetime(int(y), int(m, 10), int(d, 10), 12, 0, 0),
+    }
+    
+    # Let’s add some links from a resource library.
+    lib = get_library_or_404(settings.SPREADLINKS_DIR, 'spreadsite')
+    links = lib.all_links
+    template_args['links'] = links
     
     return render_to_response('downblog/entry_list.html', template_args, RequestContext(request))
         
