@@ -4,7 +4,6 @@
   <head>
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   	<title>{{ title }} – Spreadsite</title>
-  	<meta name="generator" content="TextMate http://macromates.com/">
   	<meta name="author" content="Damian Cugley">
   	<!-- Date: 2010-02-08 -->
   	<link rel="stylesheet" type="text/css" href="{{ settings.STATIC_URL }}style/base.css" />
@@ -18,16 +17,25 @@
       <h1>{{title}}</h1>
       {{ body|markdown }}
     </div>
+    <div id="metadata">
+      <p class="published">{{ published|date:"j N Y" }}</p>
+      <p><a href="http://www.alleged.org.uk/pdc/">Damian Cugley</a></p>
+    </div>
     <div id="sidebar">
       <h2>Project Information</h2>
       <ul>
         {% for link in links %}
         <li>
+          {% if link.href %}
           <a href="{{ link.href }}"><h3>{{ link.title }}</h3>
           {% if link.description %}{{ link.description|markdown }}{% endif %}</a>
+          {% else %}
+          <h3>{{ link.title }}</h3>
+          {% if link.description %}{{ link.description|markdown }}{% endif %}
+          {% endif %}
         </li>
         {% endfor %}
       </ul>
-    </dv>
+    </div>
   </body>
 </html>

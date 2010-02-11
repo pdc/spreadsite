@@ -12,12 +12,13 @@
 }
 
 body {
-    font-size: 100%;
+    font-size: 100%; /* Assumed to be 16px */
     width: 960px;
     margin: 0 auto;
     
     font-family: "Gentium Book Basic", "Gentium Basic", "Gentium", 
         "Palatino Linotype", "Palatino", "Book Antiqua", serif;
+    line-height: 1.25; /* Assumed to be 20px */
     background-color: #DEF;
     color: #123;
 }

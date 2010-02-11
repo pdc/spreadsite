@@ -1,0 +1,5 @@
+Title: Spreadsite Project Information
+
+The list of links to project resources, shown on the front page of [spreadsite.org][].
+
+  [spreadsite.org]: http://spreadsite.org/
