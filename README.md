@@ -25,11 +25,11 @@ Resource Library_21Nov2009_FINAL_rev2.xls, none of which was the 21 November
 Doing this by hand would have been tedious
 and error-prone. I ended up concocting a Python program that read the links from
 the spreadsheet, corrected the obvious typos in the URLs, and then called a web
-service I added to the site to allow it to inject approproiate document nodes.
+service I added to the site to allow it to inject appropriate document nodes.
 Once I had this working I was able to update the staging site, get them to sign
 off the changes, and then make identical additions to the live site.
 
-One of the biggest problems with this approach was the compelxity of the CMS.
+One of the biggest problems with this approach was the complexity of the CMS.
 All the features designed to allow the editors of the site to collaborate via
 web forms were useless complications that got in the way of my automated
 program. Why not, therefore, cut out the middleman, and have a web site that
@@ -76,7 +76,7 @@ Data Format
 -----------
 
 At present the spreadsheet must be in comma-separated values form; this is just
-because I have not bothered adding support for one of the Exel-parsing libraries
+because I have not bothered adding support for one of the Excel-parsing libraries
 available for Python. The first row MUST be column headings. Each of the
 subsequent rows specifies an entry in the library.
 
@@ -86,13 +86,15 @@ interpreting them. The following columns are significant:
 
 - `title`: The title of the link. Should be one line long and will be unique.
 - `description`: A paragraph or two describing the link. Markdown format.
+- `url`: The location of the item.
+- `image-url`: A picture to illustrate the item.
 - `href` or `url`: The address of the resource being linked to.
 - `keywords` or `main_keywords`: Keywords in the Main facet (see below)
 - `FACET_keywords`: Keywords in an additional facet (where FACET is 
   replaced with the name of that facet).
 
 At present other columns are ignored. (Probably they should be displayed as part
-of the link descpription or something.)
+of the link description or something.)
 
 Keywords are used to build a browseable drill-down navigation thingummy. 
 The navigator automatically hides keywords that would lead to no matches.
@@ -121,7 +123,7 @@ The following headers are understood:
 keywords in the data file.
 
 If there is no `METADATA.txt`, or no title is specified, then it uses library name
-(the same as the directiory name). 
+(the same as the directory name). 
 
 
     
