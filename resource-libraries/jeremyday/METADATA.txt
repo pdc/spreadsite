@@ -1,0 +1,6 @@
+Title: Jeremy Day Projects
+Keyword-separator: ,
+
+[Jeremy Day][1] has been publishing photo galleries, comics, and other artwork online for years now.
+
+  [1]: http://www.jeremydennis.co.uk/
