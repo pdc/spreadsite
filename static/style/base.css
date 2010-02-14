@@ -138,6 +138,11 @@ li h3 {
     color: #456;
 }
 
+li h3 img {
+    float: left;
+    margin: 0 10px 0 0 ;
+}
+
 #keywords p {
     margin-bottom: 0;
 }

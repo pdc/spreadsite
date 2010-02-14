@@ -163,4 +163,4 @@ class Link(object):
                 self.facet_keywords[facet_name] = val
             elif key == 'url':
                 key = 'href'
-            setattr(self, key, val)
+            setattr(self, key.replace('-', '_'), val)
