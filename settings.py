@@ -63,7 +63,7 @@ CACHE_MIDDLEWARE_KEY_PREFIX = 'spreadsite'
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 
 SPREADLINKS_DIR = local_file('resource-libraries')
-SPREADLINKS_PER_PAGE = 5
+SPREADLINKS_PER_PAGE = 20
 
 DOWNBLOG_DIR = local_file('blog-entries')
 
