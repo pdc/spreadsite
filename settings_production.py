@@ -63,7 +63,9 @@ CACHE_MIDDLEWARE_KEY_PREFIX = 'spreadsite'
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 
 SPREADLINKS_DIR = local_file('resource-libraries')
-SPREADLINKS_PER_PAGE = 5
+SPREADLINKS_PER_PAGE = 25
+
+DOWNBLOG_DIR = local_file('blog-entries')
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'athb&+#*b-v^!wu+^=3jw&3s#_hr(br)3g9_0fw8ontycc_hxk'
@@ -109,4 +111,5 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     
     'spreadsite.spreadlinks',
+    'spreadsite.downblog',
 )
