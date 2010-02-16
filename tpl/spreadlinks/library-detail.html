@@ -1,4 +1,4 @@
-{% extends "spreadlinks/base.html" %}
+{% extends base_template_name %}
 {% load markup %}
 
 {% block title %}{% if keywords %}{{ keywords|join:", " }} –{% endif %} {{ library.title }}{% endblock %}
@@ -9,7 +9,9 @@
 {% endblock %}
 
 {% block content %}
-{{ library.description|markdown }}
+<div id="description">
+  {{ library.description|markdown }}
+</div>
 
 <div id="keywords">
   {% for facet_name, facet in facet_drillupdowns %}
@@ -72,6 +74,5 @@
           {% endif %}
       </span>
   </div>
-  
 </div>
 {% endblock %}
