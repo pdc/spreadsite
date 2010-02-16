@@ -71,6 +71,7 @@ class LibrarySet(UserDict.DictMixin):
         
 class Library(object):
     keyword_separator = None # May be overidden in instances.
+    base_template_name = None
     
     def __init__(self, name, dir_name):
         self.name = name
