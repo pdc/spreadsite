@@ -1,4 +1,5 @@
 Title: Star Trek Fan Films
 Keyword-separator: ;
+Base-template: spreadlinks/base.html
 
 Fan films are made by enthusiasts and distributed for free, and have no affiliation with Paramount Pictures or CBS Studios, the legal owners of the _Star Trek_ copyrights and trade marks. 

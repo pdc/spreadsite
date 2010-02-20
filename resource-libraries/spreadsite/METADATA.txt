@@ -1,4 +1,5 @@
 Title: Spreadsite Project Information
+Base-template: spreadlinks/base.html
 
 The list of links to project resources, shown on the front page of [spreadsite.org][].
 
