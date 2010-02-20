@@ -11,27 +11,27 @@ import datetime
 from spreadsite.spreadlinks.linklibrarylib import *
 from spreadsite.spreadlinks.models import *
 
-def render_with_template(default_template_name, default_base_template_name):
+def render_with_template(default_template_name, default_base_template_name='spreadlinks/base.html'):
     """Decorator to wrap template-based rendering around a view function returning template variables."""
     def decorator(func):
         def wrapped_handler(request, template_name=None, base_template_name=None, *args, **kwargs):
             result = func(request, *args, **kwargs)
             if isinstance(result, HttpResponse):
                 return result
-            if 'base_template_name' not in result:
+            if not result.get('base_template_name'):
                 result['base_template_name'] = base_template_name or default_base_template_name
             return render_to_response(template_name or default_template_name, result, RequestContext(request))
         return wrapped_handler
     return decorator
     
     
-@render_with_template('spreadlinks/library-list.html', 'spreadlinks/base.html')
+@render_with_template('spreadlinks/library-list.html')
 def library_list(request, root_dir):
     return {
         'libraries': sorted(get_library_set(root_dir).values()),
     }
 
-@render_with_template('spreadlinks/library-detail.html', 'spreadlinks/base.html')
+@render_with_template('spreadlinks/library-detail.html')
 def library_detail(request, root_dir, library_name, urlencoded_keywords='', page=1):
     lib = get_library_or_404(root_dir, library_name)
     facet_keywords = lib.urldecode_keywords(urlencoded_keywords)
@@ -100,7 +100,7 @@ def library_detail(request, root_dir, library_name, urlencoded_keywords='', page
         
     return {
         'library': lib, 
-        'base_template_name': lib.base_template,
+        'base_template_name': lib.base_template if hasattr(lib, 'base_template') else None,
         'links': links_page,
         'link_count': len(links),
         'prev_href': prev_href,
