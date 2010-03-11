@@ -1,6 +1,5 @@
 Title: Jeremy Day Projects
 Keyword-separator: ,
-Base-template: jeremyday/base.html
 
 This is a prototype for the Projects section of [Jeremy Day][1]’s official web site.
 
