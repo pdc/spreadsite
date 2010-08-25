@@ -40,7 +40,7 @@ Status
 
 The present version is a proof of concept, using Django as its web framework. 
 
-This is i no way a finely finished piece of work; I have not spent much more
+This is in no way a finely finished piece of work; I have not spent much more
 than a working day's worth of work on it. If I were to seriously use this for a
 site I would add a bit more finesse. I may work on it enough to get it in the
 form of a re-usable Django app, just for the sake of the exercise.
@@ -124,10 +124,3 @@ keywords in the data file.
 
 If there is no `METADATA.txt`, or no title is specified, then it uses library name
 (the same as the directory name). 
-
-
-    
-
-
-
-
