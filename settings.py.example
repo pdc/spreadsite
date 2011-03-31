@@ -5,7 +5,7 @@ import os
 ROOT_DIR = os.path.dirname(__file__)
 
 def local_file(partial_name):
-  return os.path.join(ROOT_DIR, partial_name).replace('\\', '/')  
+  return os.path.join(ROOT_DIR, partial_name).replace('\\', '/')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -57,9 +57,11 @@ STATIC_URL = 'http://localhost/~pdc/spreadsite/static/'
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/'
 
-CACHE_BACKEND = 'dummy://'
-CACHE_MIDDLEWARE_SECONDS = 5 * 60 # 5 minutes
-CACHE_MIDDLEWARE_KEY_PREFIX = 'spreadsite'
+CACHEs = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 
 SPREADLINKS_DIR = local_file('resource-libraries')
@@ -109,7 +111,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.markup',
-    
+
     'spreadsite.spreadlinks',
     'spreadsite.downblog',
 )
