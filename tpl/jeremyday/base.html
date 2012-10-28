@@ -3,13 +3,13 @@
   <head>
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   	<title>{% block title %}Title of page{% endblock %}</title>
-  	<link rel="stylesheet" type="text/css" href="{{ settings.STATIC_URL }}style/jeremyday.css" />
+  	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}style/jeremyday.css" />
   	<meta name="author" content="Damian Cugley" />
   </head>
   <body>
     <div id="top">
       <p id="trail">
-        <a href="http://www.jeremydennis.co.uk/">Jeremy Day</a> <span>></span> 
+        <a href="http://www.jeremydennis.co.uk/">Jeremy Day</a> <span>></span>
       </p>
       {% block h1 %}
       <h1>{% block heading %}Heading goes here{% endblock %}</h1>
