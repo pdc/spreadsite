@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 {% load markup %}
+{% load staticfiles %}
 <html lang="en">
   <head>
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   	<title>{{ title }} – Spreadsite</title>
   	<meta name="author" content="Damian Cugley">
   	<!-- Date: 2010-02-08 -->
-  	<link rel="stylesheet" type="text/css" href="{{ settings.STATIC_URL }}style/base.css" />
-  	<link rel="stylesheet" type="text/css" href="{{ settings.STATIC_URL }}style/front.css" />
+  	<link rel="stylesheet" type="text/css" href="{% static 'style/base.css' %}" />
+  	<link rel="stylesheet" type="text/css" href="{% static 'style/front.css' %}" />
   	<meta name="google-site-verification" content="0ZHQLM2pr_gRWUbxt0RoCGDtxN4RaZ6LIjPM7Ohrzh0" />
   </head>
   <body>

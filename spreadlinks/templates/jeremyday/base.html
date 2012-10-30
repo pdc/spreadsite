@@ -1,16 +1,16 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en-GB">
   <head>
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   	<title>{% block title %}Title of page{% endblock %}</title>
-  	<link rel="stylesheet" type="text/css" href="{{ settings.STATIC_URL }}style/base.css" />
+  	<link rel="stylesheet" type="text/css" href="{% static 'style/jeremyday.css' %}" />
   	<meta name="author" content="Damian Cugley" />
   </head>
   <body>
     <div id="top">
       <p id="trail">
-        <a href="/">Home</a> <span>></span> 
-        {% block trail %}{% endblock %}
+        <a href="http://www.jeremydennis.co.uk/">Jeremy Day</a> <span>></span>
       </p>
       {% block h1 %}
       <h1>{% block heading %}Heading goes here{% endblock %}</h1>
@@ -19,6 +19,12 @@
     <div id="content">
       {% block content %}
       {% endblock %}
+      <div class="clear"></div>
+    </div>
+    <div id="powered-by">
+      <p>
+        Powered by <a href="http://spreadsite.org/" title="A less justifiable use of the phrased ‘powered by’ has yet to be devised.">Spreadsite</a>
+      </p>
     </div>
   </body>
 </html>

@@ -6,8 +6,8 @@ from django.core.cache import cache
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.conf import settings
 import datetime
-from spreadsite.spreadlinks.linklibrarylib import *
-from spreadsite.spreadlinks.models import *
+from spreadlinks.linklibrarylib import *
+from spreadlinks.models import *
 
 def render_with_template(default_template_name, default_base_template_name='spreadlinks/base.html'):
     """Decorator to wrap template-based rendering around a view function returning template variables."""
@@ -21,8 +21,8 @@ def render_with_template(default_template_name, default_base_template_name='spre
             return render_to_response(template_name or default_template_name, result, RequestContext(request))
         return wrapped_handler
     return decorator
-    
-    
+
+
 @render_with_template('spreadlinks/library-list.html')
 def library_list(request, root_dir):
     return {
@@ -60,13 +60,13 @@ def library_detail(request, root_dir, library_name, urlencoded_keywords='', page
                 'link_count': len(more_links),
             })
         facet_drillupdowns[facet_name] = {'drillups': drillups, 'drilldowns': drilldowns}
-        
+
     facet_drillupdowns = sorted(facet_drillupdowns.items(),
         key=lambda (facet_name, facet): (facet_name != 'main', facet_name))
-        
-    # Now the machinery for paging thbrough long lists of links.    
+
+    # Now the machinery for paging thbrough long lists of links.
     paginator = Paginator(links, settings.SPREADLINKS_PER_PAGE)
-    
+
     try:
         page = int(page)
     except ValueError:
@@ -75,29 +75,29 @@ def library_detail(request, root_dir, library_name, urlencoded_keywords='', page
         links_page = paginator.page(page)
     except (EmptyPage, InvalidPage):
         links_page = paginator.page(paginator.num_pages)
-        
+
     # Calculate the URLs for the previous and next links, if any.
     kwargs = {'library_name': library_name}
-    if urlencoded_keywords: 
+    if urlencoded_keywords:
         kwargs['urlencoded_keywords'] = urlencoded_keywords
     if links_page.has_previous():
         if links_page.previous_page_number() > 1:
             kwargs['page'] = str(links_page.previous_page_number())
-        
+
         prev_href = reverse('library_detail', kwargs=kwargs)
     else:
         prev_href = None
     if links_page.has_next():
         kwargs = {'library_name': library_name}
-        if urlencoded_keywords: 
+        if urlencoded_keywords:
             kwargs['urlencoded_keywords'] = urlencoded_keywords
         kwargs['page'] = str(links_page.next_page_number())
         next_href = reverse('library_detail', kwargs=kwargs)
     else:
         next_href = None
-        
+
     return {
-        'library': lib, 
+        'library': lib,
         'base_template_name': lib.base_template if hasattr(lib, 'base_template') else None,
         'links': links_page,
         'link_count': len(links),

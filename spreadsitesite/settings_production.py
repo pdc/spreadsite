@@ -5,7 +5,7 @@ import os
 ROOT_DIR = os.path.dirname(__file__)
 
 def local_file(partial_name):
-  return os.path.join(ROOT_DIR, partial_name).replace('\\', '/')  
+  return os.path.join(ROOT_DIR, partial_name).replace('\\', '/')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -77,14 +77,6 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.load_template_source',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS= [
-    "django.core.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "spreadsite.context_processors.settings",
-]
-
 MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -93,14 +85,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
-ROOT_URLCONF = 'spreadsite.urls'
-
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-    local_file('tpl'),
-)
+ROOT_URLCONF = 'spreadsitesite.urls'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -109,7 +94,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.markup',
-    
-    'spreadsite.spreadlinks',
-    'spreadsite.downblog',
+    'django.contrib.staticfiles',
+
+    'spreadlinks',
+    'spreadlinks',
 )
