@@ -16,12 +16,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = local_file('db.sqlite3')             # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'development.db'
+    }
+}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -47,9 +47,9 @@ MEDIA_ROOT = local_file('media')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://localhost/~pdc/work/2010/spreadsite/media/'
+MEDIA_URL = '/home/spreadsite/media/'
 
-#STATIC_ROOT = local_file('static')
+STATIC_ROOT = '/home/spreadsite/static'
 STATIC_URL = 'http://static.spreadsite.org/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
@@ -57,10 +57,12 @@ STATIC_URL = 'http://static.spreadsite.org/'
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/'
 
-CACHE_BACKEND = 'dummy://'
-CACHE_MIDDLEWARE_SECONDS = 5 * 60 # 5 minutes
-CACHE_MIDDLEWARE_KEY_PREFIX = 'spreadsite'
-CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/home/spreadsite/cache',
+    }
+}
 
 SPREADLINKS_DIR = local_file('resource-libraries')
 SPREADLINKS_PER_PAGE = 25
