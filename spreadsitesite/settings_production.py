@@ -72,13 +72,6 @@ DOWNBLOG_DIR = local_file('blog-entries')
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'athb&+#*b-v^!wu+^=3jw&3s#_hr(br)3g9_0fw8ontycc_hxk'
 
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.load_template_source',
-    'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
-)
-
 MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
