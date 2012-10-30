@@ -91,6 +91,6 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.staticfiles',
 
-    'spreadlinks',
+    'downblog',
     'spreadlinks',
 )
