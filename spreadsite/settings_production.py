@@ -80,7 +80,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
-ROOT_URLCONF = 'spreadsitesite.urls'
+ROOT_URLCONF = 'spreadsite.urls'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
