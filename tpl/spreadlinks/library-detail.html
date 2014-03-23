@@ -1,11 +1,12 @@
 {% extends base_template_name %}
 {% load markup %}
+{% load url from future %}
 
 {% block title %}{% if keywords %}{{ keywords|join:", " }} –{% endif %} {{ library.title }}{% endblock %}
 {% block heading %}{{ library.title }}{% endblock %}
 
 {% block trail %}
-<a href="{% url library_list %}">Resource libraries</a> <span>></span> 
+<a href="{% url 'library_list' %}">Resource libraries</a> <span>></span>
 {% endblock %}
 
 {% block content %}
@@ -24,9 +25,9 @@
         <li>
           {{ drillup.keyword }}
           {% if drillup.urlencoded %}
-          <a href="{% url library_detail library_name=library.name,urlencoded_keywords=drillup.urlencoded %}">x</a>
+          <a href="{% url 'library_detail' library_name=library.name urlencoded_keywords=drillup.urlencoded %}">x</a>
           {% else %}
-          <a href="{% url library_detail library_name=library.name %}">x</a>
+          <a href="{% url 'library_detail' library_name=library.name %}">x</a>
           {% endif %}
         </li>
         {% endfor %}
@@ -37,7 +38,7 @@
       <ul id="drilldown">
         {% for drilldown in facet.drilldowns %}
         <li>
-          <a href="{% url library_detail library_name=library.name,urlencoded_keywords=drilldown.urlencoded %}">{{ drilldown.keyword }} <small>({{ drilldown.link_count }})</small></a>
+          <a href="{% url 'library_detail' library_name=library.name urlencoded_keywords=drilldown.urlencoded %}">{{ drilldown.keyword }} <small>({{ drilldown.link_count }})</small></a>
         </li>
         {% endfor %}
       </ul>
@@ -60,7 +61,7 @@
     </li>
     {% endfor %}
   </ul>
-  
+
   <div class="pagination">
       <span class="step-links">
           {% if prev_href %}
