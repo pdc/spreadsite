@@ -7,13 +7,19 @@ Created by Damian Cugley on 2010-01-01.
 Copyright (c) 2010 Damian Cugley. All rights reserved.
 """
 
-import sys
 import os
 import UserDict
 import email # RFC 2822 parsing
 import csv
+from markdown import Markdown
+from django.utils import safestring
+
 
 MAIN = 'main'
+
+
+formatter = Markdown()
+
 
 class Error(Exception):
     """Base class for exceptions in this module."""
@@ -38,6 +44,7 @@ def tagify(*args):
     if args[0] == MAIN:
         args = args[1:]
     return '-'.join(':'.join(args).lower().replace('_', '-').split())
+
 
 class LibrarySet(UserDict.DictMixin):
     def __init__(self, root_dir):
@@ -68,6 +75,7 @@ class LibrarySet(UserDict.DictMixin):
         if not hasattr(self, '_libraries'):
             self.load_libraries()
         return self._libraries.keys()
+
 
 class Library(object):
     keyword_separator = None # May be overidden in instances.
@@ -165,3 +173,11 @@ class Link(object):
             elif key == 'url':
                 key = 'href'
             setattr(self, key.replace('-', '_'), val)
+
+    def __getattr__(self, k):
+        if k.endswith('_formatted'):
+            md = getattr(self, k[:-10])
+            if isinstance(md, str):
+                md = md.decode('UTF-8')
+            return safestring.mark_safe(formatter.convert(md))
+        raise AttributeError(k)

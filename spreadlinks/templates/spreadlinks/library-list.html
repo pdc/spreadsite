@@ -1,5 +1,4 @@
 {% extends "spreadlinks/base.html" %}
-{% load markup %}
 
 {% block title %}Libraries{% endblock %}
 {% block heading %}Resource Libraries{% endblock %}
@@ -9,7 +8,7 @@
   {% for library in libraries %}
   <li>
     <h3><a href="{{ library.name }}">{{ library.title }}</a></h3>
-    {{ library.description|markdown }}
+    {{ library.description_formatted }}
     <div><small>{{ library.updated|date:"d M Y" }}</small></div>
   </li>
   {% endfor %}

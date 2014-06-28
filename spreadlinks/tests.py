@@ -6,9 +6,11 @@ unittest). These will both pass when you run "manage.py test".
 Replace these with more appropriate tests for your application.
 """
 
+from __future__ import unicode_literals
 from django.test import TestCase
 import os
 import shutil
+from django.utils import safestring
 from linklibrarylib import *
 
 class SimpleTest(TestCase):
@@ -160,3 +162,15 @@ class SimpleTest(TestCase):
         self.assertEqual({'colour': set(['black', 'white']), 'main': set(['cat'])},
             lib.urldecode_keywords('cat+colour:black+colour:white'))
 
+
+    def test_formatted_properties(self):
+        os.mkdir(os.path.join(self.dir_name, 'baz'))
+        with open(os.path.join(self.dir_name, 'baz/data.csv'), 'wt') as output:
+            output.write(b'Title,Description,Keywords,URL\nCrumbs,Crummy,cake,http://example.org/\nSlime,"Slimy\n\n‘Wormy’",goo,http://example.com/')
+
+        libs = LibrarySet(self.dir_name)
+        lib = libs['baz']
+        self.assertEqual(2, len(lib.all_links))
+        self.assertHTMLEqual('<p>Crummy</p>', lib.all_links[0].description_formatted)
+        self.assertHTMLEqual('<p>Slimy</p><p>‘Wormy’</p>', lib.all_links[1].description_formatted)
+        self.assertTrue(isinstance(lib.all_links[0].description_formatted, safestring.SafeText))

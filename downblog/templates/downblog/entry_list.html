@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% load markup %}
 {% load staticfiles %}
 <html lang="en">
   <head>
@@ -16,11 +15,11 @@
       <p id="banner-logo">Spreadsite</p>
     </div>
     <div id="content">
-      <h1>{{title}}</h1>
-      {{ body|markdown }}
+      <h1>{{ entry.title }}</h1>
+      {{ entry.body_formatted }}
     </div>
     <div id="metadata">
-      <p class="published">{{ published|date:"j N Y" }}</p>
+      <p class="published">{{ entry.published|date:"j N Y" }}</p>
       <p><a href="http://www.alleged.org.uk/pdc/">Damian Cugley</a></p>
     </div>
     <div id="sidebar">
@@ -30,10 +29,10 @@
         <li>
           {% if link.href %}
           <a href="{{ link.href }}"><h3>{{ link.title }}</h3>
-          {% if link.description %}{{ link.description|markdown }}{% endif %}</a>
+          {% if link.description %}{{ link.description_formatted }}{% endif %}</a>
           {% else %}
           <h3>{{ link.title }}</h3>
-          {% if link.description %}{{ link.description|markdown }}{% endif %}
+          {% if link.description %}{{ link.description_formatted }}{% endif %}
           {% endif %}
         </li>
         {% endfor %}

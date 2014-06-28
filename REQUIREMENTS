@@ -1,4 +1,0 @@
-Django==1.4.2
-Markdown==2.2.0
-distribute==0.6.30
-wsgiref==0.1.2
