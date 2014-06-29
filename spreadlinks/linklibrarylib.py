@@ -13,6 +13,7 @@ import email # RFC 2822 parsing
 import csv
 from markdown import Markdown
 from django.utils import safestring
+from django.utils.functional import cached_property
 
 
 MAIN = 'main'
@@ -147,11 +148,15 @@ class Library(object):
         for tag in urlencoded_keywords.split('+'):
             try:
                 facet_name, keyword = self.facet_keywords_by_tag[tag]
-            except KeyError, e:
+            except KeyError:
                 print self.facet_keywords
                 return None
             result[facet_name].add(keyword)
         return result
+
+    @cached_property
+    def description_formatted(self):
+        return safestring.mark_safe(formatter.convert(self.description))
 
 
 class Link(object):
