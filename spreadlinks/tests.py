@@ -32,14 +32,15 @@ class SimpleTest(TestCase):
     def test_library_list_one(self):
         os.mkdir(os.path.join(self.dir_name, 'foo'))
         with open(os.path.join(self.dir_name, 'foo/METADATA.txt'), 'wt') as output:
-            output.write('Title: Fabulous Object Organization\nBoo: Ba\n\nHello, world.\n\nPleased to be here')
+                output.write(b'Title: Fabulous Object Organization\nBoo: Ba\n\nHello, world.\n\nPleased to be here!—')
+                # Dash added to check unicode handling
 
         libs = LibrarySet(self.dir_name)
         self.assertEqual(1, len(libs))
         lib = libs['foo']
         self.assertEqual('Fabulous Object Organization', lib.title)
-        self.assertEqual('Hello, world.\n\nPleased to be here', lib.description)
-        self.assertHTMLEqual('<p>Hello, world.</p><p>Pleased to be here</p>', lib.description_formatted)
+        self.assertEqual('Hello, world.\n\nPleased to be here!—', lib.description)
+        self.assertHTMLEqual('<p>Hello, world.</p><p>Pleased to be here!—</p>', lib.description_formatted)
         self.assertEqual('Ba', lib.boo)
         self.assertEqual('foo', lib.name)
 

@@ -89,7 +89,7 @@ class Library(object):
         if os.path.exists(metadata_name):
             with open(metadata_name, 'rb') as stream:
                 metadata = email.message_from_file(stream)
-            self.description = metadata.get_payload()
+            self.description = metadata.get_payload().decode('UTF-8')
             for key, value in metadata.items():
                 setattr(self, tagify(key).replace('-', '_'), value)
         else:

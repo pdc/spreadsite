@@ -3,4 +3,4 @@ Keyword-separator: ,
 
 This is a prototype for the Projects section of [Jeremy Day][1]’s official web site.
 
-  [1]: http://www.jeremydennis.co.uk/
+  [1]: http://jeremyday.uk/
