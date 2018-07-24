@@ -1,13 +1,20 @@
 # Django settings for spreadsite project.
 
-import os
+import sys
 
-ROOT_DIR = os.path.dirname(__file__)
+import environ
 
-def local_file(partial_name):
-  return os.path.join(ROOT_DIR, partial_name).replace('\\', '/')
+env = environ.Env(
+    DEBUG=(bool, False),
+    STATIC_ROOT=(str, None),
+    STATIC_URL=(str, None),
+    SECRET_KEY=str,
+    HTTPLIB2_CACHE_DIR=(str, '/var/tmp/jeremydaysite-httplib2-cache'),
+)
+environ.Env.read_env()
+local_file = environ.Path(__file__) - 1
 
-DEBUG = True
+DEBUG = env('DEBUG')
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -54,8 +61,13 @@ MEDIA_ROOT = local_file('media')
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/home/spreadsite/media/'
 
-STATIC_ROOT = '/home/spreadsite/static'
-STATIC_URL = 'http://static.spreadsite.org/'
+if env('STATIC_ROOT'):
+    STATIC_URL = env('STATIC_URL', default='//static.spreadsite.org/')
+    STATIC_ROOT = env('STATIC_ROOT')  # e.g., '/home/spreadsite/static')
+    if not DEBUG:
+        STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+else:
+    STATIC_URL = '/STATIC/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -63,10 +75,16 @@ STATIC_URL = 'http://static.spreadsite.org/'
 ADMIN_MEDIA_PREFIX = '/media/'
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': '/home/spreadsite/cache',
-    }
+    'default': (
+        {
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        }
+    if DEBUG else
+        {
+            'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+            'LOCATION': env('CACHE_DIR'),
+        }
+    ),
 }
 
 SPREADLINKS_DIR = local_file('resource-libraries')
@@ -75,7 +93,9 @@ SPREADLINKS_PER_PAGE = 25
 DOWNBLOG_DIR = local_file('blog-entries')
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'athb&+#*b-v^!wu+^=3jw&3s#_hr(br)3g9_0fw8ontycc_hxk'
+SECRET_KEY = 'secret-key-value' if DEBUG else env('SECRET_KEY')
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
