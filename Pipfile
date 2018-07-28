@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-Django = ">=1.7,<1.8"
+Django = ">=1.8,<1.9"
 Markdown = "*"
 "9fc1e05" = {path = "./../spreadlinks", editable = true}
 django-environ = "*"
