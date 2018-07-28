@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+Django = ">=2.0,<2.1"
+Markdown = "*"
+"9fc1e05" = {path = "./../spreadlinks", editable = true}
+django-environ = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"

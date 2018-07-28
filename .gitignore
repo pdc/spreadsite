@@ -3,3 +3,5 @@
 # Database will be created by running  python manage syncdb
 db.sqlite3
 settings.py
+.env
+*.db
