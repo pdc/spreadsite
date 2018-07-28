@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import unicode_literals
+
 import os
 import re
 from datetime import datetime
@@ -20,17 +20,17 @@ parser = email.parser.Parser()
 formatter = Markdown()
 
 class Entry(namedtuple('Entry', ['y', 'm', 'd', 'slug', 'suffix', 'dir_name', 'file_name'])):
-    __slots__ = ()
+    """One entry in the blog."""
 
     @cached_property
     def msg(self):
         """Return an RFC 2822 parsed message instance"""
-        with open(os.path.join(self.dir_name, self.file_name), 'rb') as strm:
+        with open(os.path.join(self.dir_name, self.file_name), 'r') as strm:
             return parser.parse(strm)
 
     @cached_property
     def body(self):
-        return self.msg.get_payload().decode('UTF-8')
+        return self.msg.get_payload()
 
     def body_formatted(self):
         return mark_safe(formatter.convert(self.body))
