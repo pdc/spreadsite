@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 Django = ">=2.0,<2.1"
 Markdown = "*"
-"9fc1e05" = {path = "./../spreadlinks", editable = true}
+Spreadlinks = "*"
 django-environ = "*"
 
 [dev-packages]
