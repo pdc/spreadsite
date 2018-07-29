@@ -1,3 +1,6 @@
-Django==1.6.5
-Markdown==2.4.1
-wsgiref==0.1.2
+-i https://pypi.org/simple
+django-environ==0.4.5
+django==2.0.7
+markdown==2.6.11
+pytz==2018.5
+spreadlinks==0.1.0.dev1

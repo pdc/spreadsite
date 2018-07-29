@@ -12,8 +12,10 @@ env.virtualenv = env.site_name
 env.settings_subdir = env.site_name
 env.django_apps = ['spreadlinks', 'downblog']
 
+
 def update_requirements():
-    local("pip freeze | egrep -v 'Fabric|pycrypto|ssh|paramiko|ecdsa' > requirements.txt")
+    local("pipenv lock -r > requirements.txt")
+
 
 def test():
     with settings(warn_only=True):
@@ -21,15 +23,17 @@ def test():
     if result.failed and not confirm("Tests failed. Continue anyway?"):
         abort("Aborting at user request.")
 
+
 def push():
     local('git push')
+
 
 def deploy():
     test()
     push()
 
     run('if [ ! -d static ]; then mkdir static; fi')
-    #run('mkdir -p caches/httplib2')
+    #  run('mkdir -p caches/httplib2')
     run('mkdir -p caches/django')
 
     code_dir = '/home/{0}/Sites/{0}'.format(env.site_name)
@@ -42,6 +46,7 @@ def deploy():
             run('./manage.py collectstatic --noinput')
 
     run('touch /etc/uwsgi/emperor.d/{0}.ini'.format(env.site_name))
+
 
 def make_virtualenv():
     env_name = 'virtualenvs/{0}'.format(env.site_name)
