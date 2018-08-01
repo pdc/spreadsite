@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from django.conf import settings
-from django.conf.urls import include, url
+from django.urls import include, path
 import downblog.views
 
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^resources/', include('spreadlinks.urls')),
-    url(r'^$', downblog.views.entry_list, {'root_dir': settings.DOWNBLOG_DIR}, 'blog-index'),
-    url(r'^admin/', admin.site.urls),
+    path(r'resources/', include('spreadlinks.urls')),
+    path(r'', downblog.views.entry_list, {'root_dir': settings.DOWNBLOG_DIR}, 'blog-index'),
+    path(r'admin/', admin.site.urls),
 ]

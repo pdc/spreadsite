@@ -39,8 +39,6 @@ def deploy():
     code_dir = '/home/{0}/Sites/{0}'.format(env.site_name)
     with cd(code_dir):
         run('git pull')
-        run('cp -p {0}/settings_production.py {0}/settings.py'.format(env.settings_subdir))
-
         with prefix('. /home/{0}/virtualenvs/{1}/bin/activate'.format(env.site_name, env.virtualenv)):
             run('pip install -r requirements.txt')
             run('./manage.py collectstatic --noinput')
