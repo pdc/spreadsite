@@ -49,11 +49,11 @@
         },
         "spreadlinks": {
             "hashes": [
-                "sha256:072d0a63497805f44d4a187b3adc076dd4f5b5da8377a1cb1670dd72e0689efc",
-                "sha256:dc0a4b8329568df991ad947524e29ec492173d12e614de46ba89122af7073614"
+                "sha256:3e6ab01e0cda58084c1447bda23f1dbb350dd66fc587bd880386306f66f20168",
+                "sha256:95c7544a35a1ec41828095fad3edd5b4c764f102dd5fa448fc182df41fbd2809"
             ],
             "index": "pypi",
-            "version": "==0.2.1"
+            "version": "==0.2.3"
         }
     },
     "develop": {}
