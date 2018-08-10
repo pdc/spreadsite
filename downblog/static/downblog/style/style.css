@@ -1,0 +1,231 @@
+@font-face {
+    font-family: 'League Gothic';
+    src: url('leaguegothic-regular-webfont.woff2') format('woff2'),
+         url('leaguegothic-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    --paper: #e1f5fe;
+    --ink: #002f6c;
+    --dark: #01579b;
+    --link-1: #ff5722;
+    --link-2: #e64a19;
+    --link-3: #bf360c;
+    --link-faint: rgba(255, 87, 34, 0.4);
+    --link-bg: rgba(255, 255, 255, 0.6);
+    --banner-paper: var(--ink);
+    --banner-ink: var(--paper);
+
+
+
+
+    margin: 0;
+    padding: 0;
+
+    font-family: "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    font-size: 100%;
+    line-height: 1.25;
+    color: #123;
+    color: var(--ink);
+    background-color: #DEF;
+    background-color: var(--paper);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.banner {
+    --paper: var(--banner-paper);
+    --ink: var(--banner-ink);
+
+    color: var(--ink);
+    background-color: var(--paper);
+}
+
+.banner-logo  {
+    margin: 0;
+    padding: 2em 10px 0;
+    font-family: "League Gothic", "Helvetica Narrow", "Arial Narrow", sans-serif;
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.post-content h1 {
+    margin: 10px 10px 10px;
+    font-family: "League Gothic", "Helvetica Narrow", "Arial Narrow", sans-serif;
+    font-size: 2em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.post-content p {
+    margin: 10px 10px;
+}
+
+.post-content a:link,
+.post-content a:visited {
+    text-decoration: none;
+    border-width: 0 0 1px;
+    border-style: solid;
+    border-color: var(--link-faint);
+}
+.post-content a:link  {
+    color: var(--link-2);
+}
+.post-content a:visited {
+    color: var(--link-3);
+}
+.post-content a:hover,
+.post-content a:active {
+    color: var(--link-1);
+    background-color: var(--link-bg);
+    border-color: var(--link-1);
+    outline: 2px solid var(--link-bg);
+}
+
+.post-metadata {
+    --ink: var(--dark);
+
+    width: 160px;
+    font-size: 0.75rem;
+    color: var(--ink);
+}
+
+.post-metadata p {
+    margin: 10px;
+}
+
+.post-metadata a:link,
+.post-metadata a:visited {
+    text-decoration: none;
+    border-width: 0 0 1px;
+    border-style: solid;
+    border-color: var(--link-faint);
+}
+.post-metadata a:link  {
+    color: var(--link-2);
+}
+.post-metadata a:visited {
+    color: var(--link-3);
+}
+.post-metadata a:hover,
+.post-metadata a:active {
+    color: var(--link-1);
+    background-color: var(--link-bg);
+    border-color: var(--link-1);
+    outline: 2px solid var(--link-bg);
+}
+
+
+.sidebar {
+    --ink: var(--dark);
+
+    color: var(--dark);
+}
+
+.sidebar-heading {
+    margin: 20px 10px 10px;
+    font-family: "League Gothic", sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.link-list {
+    margin: 0;
+    padding: 0;
+}
+
+.link-box {
+    margin: 0;
+    display: block;
+    padding: 0;
+}
+
+.link {
+    display: block;
+    padding: 5px 0;
+    text-decoration: inherit;
+    color: inherit;
+}
+
+.link-title {
+    margin: 0 10px;
+    font-size: 1em;
+}
+
+.link:link .link-title,
+.link:visited .link-title {
+    border-width: 0 0 1px;
+    border-style: solid;
+}
+.link:link .link-title {
+    color: var(--link-2);
+    border-color: var(--link-faint);
+}
+.link:visited .link-title  {
+    color: var(--link-3);
+    border-color: var(--link-faint);
+}
+
+.link:hover,
+.link:active {
+    color: var(--link-1);
+    background-color: var(--link-bg);
+    border-color: var(--link-1);
+}
+
+.link:hover .link-title,
+.link:active .link-title {
+    color: var(--link-1);
+    border-color: var(--link-1);
+}
+
+.link-box p {
+    margin: 5px 10px;
+}
+
+@media (min-width: 640px) {
+    .main {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+    }
+    .post {
+        flex-grow: 1;
+    }
+    .sidebar {
+        flex: 0 0 240px;
+        width: 240px;
+    }
+}
+
+@media (min-width: 800px) {
+    .post {
+        display: flex;
+        flex-flow: row nowrap;
+    }
+    .post-metadata {
+        margin-top: 54px;
+        flex: 0 0 160px;
+    }
+}
+
+@media (min-width: 960px) {
+    .banner {
+        margin: 0 auto;
+        width: 960px;
+    }
+    .post {
+        flex: 0 0 720px;
+    }
+    .post-content {
+        flex: 0 0 560px;
+    }
+}

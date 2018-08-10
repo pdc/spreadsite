@@ -3,40 +3,44 @@
 <html lang="en">
   <head>
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  	<title>{{ title }} – Spreadsite</title>
+  	<title>{% if title %}{{ title }} – {% endif %}Spreadsite</title>
   	<meta name="author" content="Damian Cugley">
   	<!-- Date: 2010-02-08 -->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/base.css' %}" />
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/front.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'downblog/style/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'downblog/style/theme.css' %}" />
   	<meta name="google-site-verification" content="0ZHQLM2pr_gRWUbxt0RoCGDtxN4RaZ6LIjPM7Ohrzh0" />
   </head>
   <body>
-    <div id="banner">
-      <p id="banner-logo">Spreadsite</p>
-    </div>
-    <div id="content">
-      <h1>{{ entry.title }}</h1>
-      {{ entry.body_formatted }}
-    </div>
-    <div id="metadata">
-      <p class="published">{{ entry.published|date:"j N Y" }}</p>
-      <p><a href="//alleged.org.uk/pdc/">Damian Cugley</a></p>
-    </div>
-    <div id="sidebar">
-      <h2>Project Information</h2>
-      <ul>
-        {% for link in links %}
-        <li>
-          {% if link.href %}
-          <a href="{{ link.href }}"><h3>{{ link.title }}</h3>
-          {% if link.description %}{{ link.description_formatted }}{% endif %}</a>
-          {% else %}
-          <h3>{{ link.title }}</h3>
-          {% if link.description %}{{ link.description_formatted }}{% endif %}
-          {% endif %}
-        </li>
-        {% endfor %}
-      </ul>
+    <header class="banner">
+      <p class="banner-logo">Spreadsite</p>
+    </header>
+    <div class="main">
+      <section class="post">
+        <div class="post-content">
+          <h1>{{ entry.title }}</h1>
+          {{ entry.body_formatted }}
+        </div>
+        <div class="post-metadata">
+          <p class="post-published">{{ entry.published|date:"j N Y" }}</p>
+          <p><a href="//alleged.org.uk/pdc/">Damian Cugley</a></p>
+        </div>
+      </section>
+      <aside class="sidebar">
+        <h2 class="sidebar-heading">Project Information</h2>
+        <ul class="link-list">
+          {% for link in links %}
+          <li class="link-box">
+            {% if link.href %}
+            <a class="link" href="{{ link.href }}"><h3 class="link-title link-title-enabled">{{ link.title }}</h3>
+            {% if link.description %}{{ link.description_formatted }}{% endif %}</a>
+            {% else %}
+            <h3 class="link-title">{{ link.title }}</h3>
+            {% if link.description %}{{ link.description_formatted }}{% endif %}
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </aside>
     </div>
   </body>
 </html>

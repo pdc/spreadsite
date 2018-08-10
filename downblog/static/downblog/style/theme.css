@@ -1,0 +1,14 @@
+
+html {
+    --paper: #FFF;
+    --ink: rgba(0, 0, 0, 0.8);
+    --dark: rgba(0, , 0. 0.5);
+    --link-1: rgb(24, 109, 220);
+    --link-2: rgb(84, 117, 160);
+    --link-3: rgb(42, 59, 80);
+    --link-faint: rgba(24, 109, 220, 0.3);
+    --link-bg: rgba(224,229,207, 0.5);
+
+    --banner-paper: #c5c6c0;
+    --banner-ink: rgba(0, 0, 0, 0.5);
+}

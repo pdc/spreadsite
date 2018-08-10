@@ -1,0 +1,13 @@
+
+html {
+    --paper: #e1f5fe;
+    --ink: #002f6c;
+    --dark: #01579b;
+    --link-1: #ff5722;
+    --link-2: #e64a19;
+    --link-3: #bf360c;
+    --link-faint: rgba(255, 87, 34, 0.4);
+    --link-bg: rgba(255, 255, 255, 0.6);
+    --banner-paper: var(--ink);
+    --banner-ink: var(--paper);
+}
