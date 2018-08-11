@@ -24,6 +24,7 @@ MANAGERS = ADMINS
 
 ALLOWED_HOSTS = [
     'localhost',
+    'mustardseed.local',
     'spreadsite.org',
     'www.spreadsite.org',
 ]

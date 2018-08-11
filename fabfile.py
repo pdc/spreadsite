@@ -41,9 +41,7 @@ def deploy():
         run('git pull')
         with prefix('. /home/{0}/virtualenvs/{1}/bin/activate'.format(env.site_name, env.virtualenv)):
             run('pip install -r requirements.txt')
-            run('./manage.py collectstatic --noinput')
-
-    run('touch /etc/uwsgi/emperor.d/{0}.ini'.format(env.site_name))
+            run('envdir /service/%s/env ./manage.py collectstatic --noinput' % (env.site_name,))
 
 
 def make_virtualenv():

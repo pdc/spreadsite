@@ -18,14 +18,14 @@ html {
     --banner-paper: var(--ink);
     --banner-ink: var(--paper);
 
-
-
-
     margin: 0;
     padding: 0;
 
     font-family: "Helvetica Neue", "Arial", "Helvetica", sans-serif;
     font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
     line-height: 1.25;
     color: #123;
     color: var(--ink);
