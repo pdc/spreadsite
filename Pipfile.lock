@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "3c419d41b9322d25627407188869e291ae703f479dcd90d440bf7224e0b8ce5b"
+            "sha256": "1ccf7bdbf65a24134c49a58eac1dfbf02de4844fe749f08af237f2a1b5a9e275"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -49,12 +49,40 @@
         },
         "spreadlinks": {
             "hashes": [
-                "sha256:3e6ab01e0cda58084c1447bda23f1dbb350dd66fc587bd880386306f66f20168",
-                "sha256:95c7544a35a1ec41828095fad3edd5b4c764f102dd5fa448fc182df41fbd2809"
+                "sha256:8af63529800853488f8d5e7c22feece9c554baec1e01824fd3ab841dd4435287",
+                "sha256:c50ba481aa3fd2f733eb234ff82bd7ed07a0bb26befbf6c85bdcf9d84ffcd4a2"
             ],
             "index": "pypi",
-            "version": "==0.2.3"
+            "version": "==0.3.0"
         }
     },
-    "develop": {}
+    "develop": {
+        "9fc1e05": {
+            "editable": true,
+            "path": "./../spreadlinks"
+        },
+        "django": {
+            "hashes": [
+                "sha256:0c5b65847d00845ee404bbc0b4a85686f15eb3001ffddda3db4e9baa265bf136",
+                "sha256:68aeea369a8130259354b6ba1fa9babe0c5ee6bced505dea4afcd00f765ae38b"
+            ],
+            "index": "pypi",
+            "version": "==2.0.8"
+        },
+        "markdown": {
+            "hashes": [
+                "sha256:9ba587db9daee7ec761cfc656272be6aabe2ed300fece21208e4aab2e457bc8f",
+                "sha256:a856869c7ff079ad84a3e19cd87a64998350c2b94e9e08e44270faef33400f81"
+            ],
+            "index": "pypi",
+            "version": "==2.6.11"
+        },
+        "pytz": {
+            "hashes": [
+                "sha256:a061aa0a9e06881eb8b3b2b43f05b9439d6583c206d0a6c340ff72a7b6669053",
+                "sha256:ffb9ef1de172603304d9d2819af6f5ece76f2e85ec10692a524dd876e72bf277"
+            ],
+            "version": "==2018.5"
+        }
+    }
 }
