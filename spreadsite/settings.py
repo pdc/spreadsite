@@ -70,6 +70,10 @@ if env('STATIC_ROOT'):
 else:
     STATIC_URL = '/STATIC/'
 
+STATICFILES_DIRS = [
+    local_file('static')
+]
+
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
@@ -99,9 +103,9 @@ SECRET_KEY = 'secret-key-value' if DEBUG else env('SECRET_KEY')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': [
-        #     # insert your TEMPLATE_DIRS here
-        # ],
+        'DIRS': [
+            local_file('templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'debug': DEBUG,

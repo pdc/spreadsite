@@ -8,7 +8,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
-    path(r'resources/', include('spreadlinks.urls')),
+    path(r'resources/', include('spreadlinks.urls'), {'style_links': [], 'style_includes': ['spreadlinks.css', 'downblog/theme.css']}),
     path(r'', downblog.views.entry_list, {'root_dir': settings.DOWNBLOG_DIR}, 'blog-index'),
     path(r'admin/', admin.site.urls),
 ]

@@ -2,8 +2,8 @@
 
 @font-face {
     font-family: 'League Gothic';
-    src: url({% static 'downblog/style/leaguegothic-regular-webfont.woff2' %}) format('woff2'),
-         url({% static 'downblog/style/leaguegothic-regular-webfont.woff' %}) format('woff');
+    src: url({% static 'fonts/leaguegothic-regular-webfont.woff2' %}) format('woff2'),
+         url({% static 'fonts/leaguegothic-regular-webfont.woff' %}) format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -12,7 +12,7 @@
 html {
     --paper: #e1f5fe;
     --ink: #002f6c;
-    --dark: #01579b;
+    --muted: #01579b;
     --link-1: #ff5722;
     --link-2: #e64a19;
     --link-3: #bf360c;
@@ -93,7 +93,7 @@ body {
 }
 
 .post-metadata {
-    --ink: var(--dark);
+    --ink: var(--muted);
 
     width: 160px;
     font-size: 0.75rem;
@@ -127,9 +127,9 @@ body {
 
 
 .sidebar {
-    --ink: var(--dark);
+    --ink: var(--muted);
 
-    color: var(--dark);
+    color: var(--muted);
 }
 
 .sidebar-heading {
