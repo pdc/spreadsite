@@ -3,4 +3,4 @@ django-environ==0.4.5
 django==2.0.8
 markdown==2.6.11
 pytz==2018.5
-spreadlinks==0.2.3
+spreadlinks==0.4.0
