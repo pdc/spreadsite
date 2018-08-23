@@ -7,8 +7,7 @@ name = "pypi"
 Django = ">=2.0,<2.1"
 Markdown = "*"
 django-environ = "*"
-spreadlinks = "*"
-
+spreadlinks = ">=0.4.0"
 
 [requires]
 python_version = "3.6"
